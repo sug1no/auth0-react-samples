@@ -27,6 +27,8 @@ const NavBar = () => {
     isAuthenticated,
     loginWithRedirect,
     logout,
+    getIdTokenClaims,
+    getAccessTokenSilently,
   } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
 
@@ -34,6 +36,19 @@ const NavBar = () => {
     logout({
       returnTo: window.location.origin,
     });
+
+  const getToken = async () => {
+    if (isAuthenticated) {
+      const token = await getIdTokenClaims();
+      console.log(token);
+      const accessToken = await getAccessTokenSilently();
+      console.log(accessToken);
+    } else {
+      console.log('not logged in');
+    }
+  };
+
+  getToken();
 
   return (
     <div className="nav-container">
