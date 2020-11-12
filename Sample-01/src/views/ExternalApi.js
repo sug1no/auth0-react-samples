@@ -17,6 +17,7 @@ export const ExternalApiComponent = () => {
   const {
     getAccessTokenSilently,
     loginWithPopup,
+    logout,
     getAccessTokenWithPopup,
   } = useAuth0();
 
@@ -122,6 +123,12 @@ export const ExternalApiComponent = () => {
 
         <Button color="primary" className="mt-5" onClick={callApi}>
           Ping API
+        </Button>
+        <Button color="primary" className="mt-5" onClick={() => logout({ returnTo: window.location.href })}>
+          Logout
+        </Button>
+        <Button color="primary" className="mt-5" onClick={(e) => handle(e, handleLoginAgain)}>
+          Login again
         </Button>
       </div>
 
