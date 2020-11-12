@@ -42,6 +42,7 @@ const NavBar = () => {
       const token = await getIdTokenClaims();
       console.log(token);
       const accessToken = await getAccessTokenSilently();
+      console.log('accessToken:');
       console.log(accessToken);
     } else {
       console.log('not logged in');
